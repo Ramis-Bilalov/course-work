@@ -43,6 +43,10 @@ public class Employee {
         return result;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
