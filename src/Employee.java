@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Employee {
 
     private String firstName;
@@ -23,24 +25,13 @@ public class Employee {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Employee employee = (Employee) o;
-
-        if (departmentNum != employee.departmentNum) return false;
-        if (salary != employee.salary) return false;
-        if (!firstName.equals(employee.firstName)) return false;
-        if (!middleName.equals(employee.middleName)) return false;
-        return lastName.equals(employee.lastName);
+        return firstName.equals(employee.firstName) && middleName.equals(employee.middleName) && lastName.equals(employee.lastName);
     }
 
     @Override
     public int hashCode() {
-        int result = firstName.hashCode();
-        result = 31 * result + middleName.hashCode();
-        result = 31 * result + lastName.hashCode();
-        result = 31 * result + departmentNum;
-        result = 31 * result + salary;
-        return result;
+        return Objects.hash(firstName, middleName, lastName);
     }
 
     public int getId() {
