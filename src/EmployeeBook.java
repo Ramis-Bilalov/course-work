@@ -17,11 +17,10 @@ public class EmployeeBook {
     }
 
     public Employee getEmployeeById (int id) {
-        for (int i = 0; i < employees.length; i++) {
-            if(employees[i] == null) {
-                return null;
-            } else return employees[i];
-        } return null;
+        for (Employee employee : employees) {
+            return employee;
+        }
+        return null;
     }
 
     public int getEmployeesLength() {
@@ -51,14 +50,15 @@ public class EmployeeBook {
 
     public int getCountOfEmployee(EmployeeBook employeeBook) {
         int count = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if(employees[i] != null) {
+        for (Employee employee : employees) {
+            if (employee != null) {
                 count++;
             }
-        } return count;
+        }
+        return count;
     }
 
-    private Employee getEmployeeWithLowestSalary(Employee[] employees) {                                                // метод, возвращающий объект Employee, который имеет мин. ЗП
+    public Employee getEmployeeWithLowestSalary(Employee[] employees) {                                                // метод, возвращающий объект Employee, который имеет мин. ЗП
         int label = Integer.MAX_VALUE;
         int id = 0;
         for (int i = 0; i < employees.length; i++) {
@@ -70,7 +70,7 @@ public class EmployeeBook {
         return employees[id];
     }
 
-    private Employee getEmployeeWithHighestSalary(Employee[] employees) {                                               // метод, возвращающий объект Employee, который имеет макс. ЗП
+    public Employee getEmployeeWithHighestSalary(Employee[] employees) {                                               // метод, возвращающий объект Employee, который имеет макс. ЗП
         int label = 0;
         int id = 0;
         for (int i = 0; i < employees.length; i++) {
@@ -82,7 +82,7 @@ public class EmployeeBook {
         return employees[id];
     }
 
-    private int getAverageSalary(Employee[] employees) {                                                                // метод, возвращающий среднюю ЗП по всем сотрудникам
+    public int getAverageSalary(Employee[] employees) {                                                                // метод, возвращающий среднюю ЗП по всем сотрудникам
         int sum = 0;
         int averageSalary;
         for (Employee employee : employees) {
@@ -92,13 +92,13 @@ public class EmployeeBook {
         return averageSalary;
     }
 
-    private void printAllEmployeesFullNames(Employee[] employees) {                                                     // метод, печатающий в консоль ФИО всех сотрудников
+    public void printAllEmployeesFullNames(Employee[] employees) {                                                     // метод, печатающий в консоль ФИО всех сотрудников
         System.out.println("\n---ФИО всех сотрудников---");
         for (Employee employee : employees) {
             System.out.println(employee.getLastName() + " " + employee.getFirstName() + " " + employee.getMiddleName());
         }
     }
-    private void indexAllEmployeesSalaries(Employee[] employees, int indexationPercentage) {                            // метод, который реализует индексацию ЗП по всем сотрудникам
+    public void indexAllEmployeesSalaries(Employee[] employees, int indexationPercentage) {                            // метод, который реализует индексацию ЗП по всем сотрудникам
         int newSalary;
         for (Employee employee : employees) {
             newSalary = employee.getSalary() + employee.getSalary() * indexationPercentage / 100;
@@ -106,7 +106,7 @@ public class EmployeeBook {
         }
     }
 
-    private Employee getEmployeeWithLowestSalaryOnDepartment(Employee[] employees, int departmentNum) {                 // метод, возвращающий объект Employee, который имеет мин. ЗП в отделе
+    public Employee getEmployeeWithLowestSalaryOnDepartment(Employee[] employees, int departmentNum) {                 // метод, возвращающий объект Employee, который имеет мин. ЗП в отделе
         int label = Integer.MAX_VALUE;
         int id = 0;
         for (int i = 0; i < employees.length; i++) {
@@ -118,7 +118,7 @@ public class EmployeeBook {
         return employees[id];
     }
 
-    private Employee getEmployeeWithHighestSalaryOnDepartment(Employee[] employees, int departmentNum) {                // метод, возвращающий объект Employee, который имеет макс. ЗП в отделе
+    public Employee getEmployeeWithHighestSalaryOnDepartment(Employee[] employees, int departmentNum) {                // метод, возвращающий объект Employee, который имеет макс. ЗП в отделе
         int label = 0;
         int id = 0;
         for (int i = 0; i < employees.length; i++) {
@@ -130,7 +130,7 @@ public class EmployeeBook {
         return employees[id];
     }
 
-    private int getSalaryExpensesOnDepartment(Employee[] employees, int departmentNum) {                                // метод, возвращающий сумму затрат на ЗП по отделу
+    public int getSalaryExpensesOnDepartment(Employee[] employees, int departmentNum) {                                // метод, возвращающий сумму затрат на ЗП по отделу
         int sum = 0;
         for (Employee employee : employees) {
             if (employee.getDepartmentNum() == departmentNum) {
@@ -140,7 +140,7 @@ public class EmployeeBook {
         return sum;
     }
 
-    private int getAverageSalaryOnDepartment(Employee[] employees, int departmentNum) {                                 // метод, возвращающий среднюю ЗП по отделу
+    public int getAverageSalaryOnDepartment(Employee[] employees, int departmentNum) {                                 // метод, возвращающий среднюю ЗП по отделу
         int sum = 0;
         int averageSalary;
         int employeesCount = getNumberOfEmployeesOnDepartment(employees, departmentNum);
@@ -153,7 +153,7 @@ public class EmployeeBook {
         return averageSalary;
     }
 
-    private int getNumberOfEmployeesOnDepartment(Employee[] employees, int departmentNum) {                             // вспомогательный метод для вычисления количества сотрудников в отделе
+    public int getNumberOfEmployeesOnDepartment(Employee[] employees, int departmentNum) {                             // вспомогательный метод для вычисления количества сотрудников в отделе
         int employeesCount = 0;
         for (Employee employee : employees) {
             if (employee.getDepartmentNum() == departmentNum) {
@@ -163,7 +163,7 @@ public class EmployeeBook {
         return employeesCount;
     }
 
-    private void indexAllEmployeesSalariesOnDepartment(Employee[] employees,                                            // метод, который реализует индексацию ЗП по отделу
+    public void indexAllEmployeesSalariesOnDepartment(Employee[] employees,                                            // метод, который реализует индексацию ЗП по отделу
                                                               int departmentNum, int indexationPercentage) {
         int newSalary = 0;
         for (Employee employee : employees) {
@@ -174,7 +174,7 @@ public class EmployeeBook {
         }
     }
 
-    private void printAllEmployeesListWithoutDepNum(Employee[] employees) {                                             // метод, выводящий в консоль информацию о сотрудниках без указания номера отдела
+    public void printAllEmployeesListWithoutDepNum(Employee[] employees) {                                             // метод, выводящий в консоль информацию о сотрудниках без указания номера отдела
         for (Employee employee : employees) {
             System.out.println("ID:" + employee.getId() + "\t" + "ФИО: " + employee.getLastName() + " "
                     + employee.getFirstName() + " " + employee.getMiddleName() +
@@ -182,7 +182,7 @@ public class EmployeeBook {
         }
     }
 
-    private void printAllEmployeesWhoEarnLessThanAmount(Employee[] employees, int value) {                              // метод, который выводит в консоль всех сотрудников зарабатывающих меньше значения указанного в параметрах
+    public void printAllEmployeesWhoEarnLessThanAmount(Employee[] employees, int value) {                              // метод, который выводит в консоль всех сотрудников зарабатывающих меньше значения указанного в параметрах
         for (Employee employee : employees) {
             if (employee.getSalary() < value) {
                 System.out.println("ID:" + employee.getId() + "\t" + "ФИО: " + employee.getLastName() + " "
@@ -192,7 +192,7 @@ public class EmployeeBook {
         }
     }
 
-    private void printAllEmployeesWhoEarnMoreThanAmount (Employee[] employees, int value) {                             // метод, который выводит в консоль всех сотрудников зарабатывающих меньше значения указанного в параметрах
+    public void printAllEmployeesWhoEarnMoreThanAmount (Employee[] employees, int value) {                             // метод, который выводит в консоль всех сотрудников зарабатывающих меньше значения указанного в параметрах
         for (Employee employee : employees) {
             if (employee.getSalary() >= value) {
                 System.out.println("ID:" + employee.getId() + "\t" + "ФИО: " + employee.getLastName() + " "
