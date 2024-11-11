@@ -80,8 +80,13 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "ID:" + id + "\t" + "ФИО: " + lastName + " " + firstName + " " + middleName +
-                "\n\t\tНомер отдела: " + departmentNum +
-                "\n\t\tЗарплата: " + salary + "\n";
+        StringBuilder builder = new StringBuilder();
+        builder.append("ID:" + id + "\t");
+        builder.append("ФИО: " + lastName + " ");
+        builder.append(firstName + " ");
+        builder.append(middleName + "\n\t\t");
+        builder.append("Номер отдела: " + departmentNum);
+        builder.append("\n\t\tЗарплата: " + salary + "\n");
+        return builder.toString();
     }
 }
