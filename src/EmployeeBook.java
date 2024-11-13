@@ -37,10 +37,9 @@ public class EmployeeBook {
         int employeeCount = getCountOfEmployee(employeeBook);
         int sum = 0;
         for (int i = 0; i < employeeCount; i++) {
-            if (this.employees[i] == null) {
-                continue;
+            if (this.employees[i] != null) {
+                sum += this.employees[i].getSalary();
             }
-            sum += this.employees[i].getSalary();
         }
         return sum;
     }
@@ -68,8 +67,7 @@ public class EmployeeBook {
         int label = Integer.MAX_VALUE;
         int id = 0;
         for (int i = 0; i < employees.length; i++) {
-            boolean correct = employees[i].getSalary() < label && employees[i] != null;
-            if (correct) {
+            if (employees[i].getSalary() < label && employees[i] != null) {
                 label = employees[i].getSalary();
                 id = i;
             }
@@ -81,8 +79,7 @@ public class EmployeeBook {
         int label = 0;
         int id = 0;
         for (int i = 0; i < employees.length; i++) {
-            boolean correct = employees[i].getSalary() > label && employees[i] != null;
-            if (correct) {
+            if (employees[i].getSalary() > label && employees[i] != null) {
                 label = employees[i].getSalary();
                 id = i;
             }
@@ -128,8 +125,7 @@ public class EmployeeBook {
         int label = Integer.MAX_VALUE;
         int id = 0;
         for (int i = 0; i < employees.length; i++) {
-            boolean correct = employees[i].getDepartmentNum() == departmentNum && employees[i].getSalary() < label && employees[i] != null;
-            if(correct) {
+            if(employees[i].getDepartmentNum() == departmentNum && employees[i].getSalary() < label && employees[i] != null) {
                 label = employees[i].getSalary();
                 id = i;
             }
@@ -141,8 +137,7 @@ public class EmployeeBook {
         int label = 0;
         int id = 0;
         for (int i = 0; i < employees.length; i++) {
-            boolean correct = employees[i].getDepartmentNum() == departmentNum && employees[i].getSalary() > label && employees[i] != null;
-            if(correct) {
+            if(employees[i].getDepartmentNum() == departmentNum && employees[i].getSalary() > label && employees[i] != null) {
                 label = employees[i].getSalary();
                 id = i;
             }
@@ -153,8 +148,7 @@ public class EmployeeBook {
     public int getSalaryExpensesOnDepartment(int departmentNum) {                                                       // метод, возвращающий сумму затрат на ЗП по отделу
         int sum = 0;
         for (int i = 0; i < employees.length; i++) {
-            boolean correct = employees[i].getDepartmentNum() == departmentNum && employees[i] != null;
-            if (correct) {
+            if (employees[i].getDepartmentNum() == departmentNum && employees[i] != null) {
                 sum += employees[i].getSalary();
             }
         }
@@ -166,8 +160,7 @@ public class EmployeeBook {
         int averageSalary;
         int employeesCount = getNumberOfEmployeesOnDepartment(departmentNum);
         for (int i = 0; i < employees.length; i++) {
-            boolean correct = employees[i].getDepartmentNum() == departmentNum && employees[i] != null;
-            if (correct) {
+            if (employees[i].getDepartmentNum() == departmentNum && employees[i] != null) {
                 sum += employees[i].getSalary();
             }
         }
@@ -178,8 +171,7 @@ public class EmployeeBook {
     public int getNumberOfEmployeesOnDepartment(int departmentNum) {                                                    // вспомогательный метод для вычисления количества сотрудников в отделе
         int employeesCount = 0;
         for (int i = 0; i < employees.length; i++) {
-            boolean correct = employees[i].getDepartmentNum() == departmentNum && employees[i] != null;
-            if (correct) {
+            if (employees[i].getDepartmentNum() == departmentNum && employees[i] != null) {
                 employeesCount++;
             }
         }
@@ -189,8 +181,7 @@ public class EmployeeBook {
     public void indexAllEmployeesSalariesOnDepartment(int departmentNum, int indexationPercentage) {                    // метод, который реализует индексацию ЗП по отделу
         int newSalary;
         for (int i = 0; i < employees.length; i++) {
-            boolean correct = employees[i].getDepartmentNum() == departmentNum && employees[i] != null;
-            if (correct) {
+            if (employees[i].getDepartmentNum() == departmentNum && employees[i] != null) {
                 newSalary = employees[i].getSalary() + employees[i].getSalary() * indexationPercentage / 100;
                 employees[i].setSalary(newSalary);
             }
@@ -209,8 +200,7 @@ public class EmployeeBook {
 
     public void printAllEmployeesWhoEarnLessThanAmount(int value) {                                                     // метод, который выводит в консоль всех сотрудников зарабатывающих меньше значения указанного в параметрах
         for (int i = 0; i < employees.length; i++) {
-            boolean correct = employees[i].getSalary() < value && employees[i] != null;
-            if (correct) {
+            if (employees[i].getSalary() < value && employees[i] != null) {
                 System.out.println("ID:" + employees[i].getId() + "\t" + "ФИО: " + employees[i].getLastName() + " "
                         + employees[i].getFirstName() + " " + employees[i].getMiddleName() +
                         "\n\t\tЗарплата: " + employees[i].getSalary() + "\n");
@@ -220,8 +210,7 @@ public class EmployeeBook {
 
     public void printAllEmployeesWhoEarnMoreThanAmount (int value) {                                                    // метод, который выводит в консоль всех сотрудников зарабатывающих меньше значения указанного в параметрах
         for (int i = 0; i < employees.length; i++) {
-            boolean correct = employees[i].getSalary() >= value && employees[i] != null;
-            if (correct) {
+            if (employees[i].getSalary() >= value && employees[i] != null) {
                 System.out.println("ID:" + employees[i].getId() + "\t" + "ФИО: " + employees[i].getLastName() + " "
                         + employees[i].getFirstName() + " " + employees[i].getMiddleName() +
                         "\n\t\tЗарплата: " + employees[i].getSalary() + "\n");
